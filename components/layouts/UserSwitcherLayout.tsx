@@ -6,15 +6,15 @@ interface Props {
   children: React.ReactElement | React.ReactElement[]
 }
 
-const DefaultLayout: React.FC<Props> = ({ children }) => {
+const UserSwitcherLayout: React.FC<Props> = ({ children }) => {
   return (
     <>
       <header>
-        <NavBar />
+        <NavBar logoOnly />
       </header>
       <main>{children}</main>
     </>
   )
 }
 
-export default DefaultLayout
+export default UserSwitcherLayout

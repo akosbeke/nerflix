@@ -36,3 +36,10 @@ test('NavBar should render all the necessary components', async () => {
   expect(notificationDropdown).not.toBeVisible()
   expect(profileDropdown).toBeVisible()
 })
+
+test('NavBar should only render logo in logoOnly mode', async () => {
+  render(<NavBar logoOnly />)
+
+  expect(screen.getByAltText(SITENAME)).toBeInTheDocument()
+  expect(screen.queryByLabelText(/keresés/i)).not.toBeInTheDocument()
+})

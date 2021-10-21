@@ -30,3 +30,11 @@ Heading.args = {
   component: 'h1',
   variant: 'heading',
 }
+
+export const Huge = Template.bind({})
+
+Huge.args = {
+  children: 'Huge Heading',
+  component: 'h1',
+  variant: 'huge',
+}

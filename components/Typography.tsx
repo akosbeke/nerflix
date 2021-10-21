@@ -4,7 +4,7 @@ import styled from 'styled-components'
 interface Props {
   children: React.ReactNode
   component?: keyof JSX.IntrinsicElements
-  variant?: 'body' | 'heading'
+  variant?: 'body' | 'heading' | 'huge'
 }
 
 const Typography: React.FC<Props> = ({ children, component = 'div', variant = 'body' }) => {
@@ -32,6 +32,12 @@ const Container = styled.div`
     font-weight: 700;
     line-height: 1.25vw;
     font-size: 1.4vw;
+  }
+
+  &.huge {
+    font-weight: 500;
+    line-height: 1;
+    font-size: 3.5vw;
   }
 `
 

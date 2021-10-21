@@ -11,3 +11,8 @@ export default {
 const Template: ComponentStory<typeof NavBar> = (args) => <NavBar {...args} />
 
 export const Default = Template.bind({})
+
+export const LogoOnly = Template.bind({})
+LogoOnly.args = {
+  logoOnly: true,
+}
