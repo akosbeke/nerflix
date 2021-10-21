@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styled from 'styled-components'
+import { useRouter } from 'next/router'
 
 import { SITENAME } from '../../config'
 import DefaultLayout from '../../components/layouts/DefaultLayout'
@@ -10,20 +11,21 @@ import thumbnailPhoto from '../../public/thumbnail.jpg'
 import MainContainer from '../../components/MainContainer'
 import { ThumbnailGrid } from '../../styles/global'
 
-const Search: NextPage = () => {
+const Browse: NextPage = () => {
+  const router = useRouter()
+  const { title } = router.query
+
   return (
     <>
       <Head>
-        <title>Keresés - {SITENAME}</title>
+        <title>Böngészés - {SITENAME}</title>
         <meta name="description" content="Keresés" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <DefaultLayout>
         <MainContainer>
-          <SearchText>
-            Fedezz fel ehhez hasonló műsorokat: <span>Elk*rtuk</span>
-          </SearchText>
+          <BrowseTitle>{title}</BrowseTitle>
         </MainContainer>
         <MainContainer>
           <ThumbnailGrid>
@@ -37,14 +39,12 @@ const Search: NextPage = () => {
   )
 }
 
-const SearchText = styled.div`
+const BrowseTitle = styled.h1`
   margin: 150px 0 1vw;
   font-family: ${(props) => props.theme.fonts.body};
-  color: grey;
-
-  span {
-    color: white;
-  }
+  color: white;
+  font-weight: 700;
+  font-size: 38px;
 `
 
-export default Search
+export default Browse
