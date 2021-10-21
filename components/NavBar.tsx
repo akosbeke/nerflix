@@ -8,7 +8,11 @@ import SearchBox from './SearchBox'
 import MenuDropdown from './MenuDropdown'
 import { SITENAME } from '../config'
 
-const NavBar: React.FC = () => {
+interface Props {
+  logoOnly?: boolean
+}
+
+const NavBar: React.FC<Props> = ({ logoOnly }) => {
   const [activeDropdown, setActiveDropdown] = useState<'notification' | 'profile' | null>(null)
 
   return (
@@ -16,60 +20,65 @@ const NavBar: React.FC = () => {
       <NavContainer>
         <Image alt={SITENAME} src={nerlogo} width={90} height={33} />
 
-        <Menu>
-          <MenuItem className="active">
-            <a href="#">Főoldal</a>
-          </MenuItem>
-          <MenuItem>
-            <a href="#">Tévéműsorok</a>
-          </MenuItem>
-          <MenuItem>
-            <a href="#">Filmek</a>
-          </MenuItem>
-          <MenuItem>
-            <a href="#">Új és népszerű</a>
-          </MenuItem>
-          <MenuItem>
-            <a href="#">Saját listám</a>
-          </MenuItem>
-        </Menu>
+        {!logoOnly && (
+          <>
+            <Menu>
+              <MenuItem className="active">
+                <a href="#">Főoldal</a>
+              </MenuItem>
+              <MenuItem>
+                <a href="#">Tévéműsorok</a>
+              </MenuItem>
+              <MenuItem>
+                <a href="#">Filmek</a>
+              </MenuItem>
+              <MenuItem>
+                <a href="#">Új és népszerű</a>
+              </MenuItem>
+              <MenuItem>
+                <a href="#">Saját listám</a>
+              </MenuItem>
+            </Menu>
 
-        <RightMenuItem>
-          <SearchBox />
-        </RightMenuItem>
+            <RightMenuItem>
+              <SearchBox />
+            </RightMenuItem>
 
-        <RightMenuItem onMouseOver={() => setActiveDropdown('notification')}>
-          <MenuDropdown
-            menuItem={
-              <div aria-label="Értesítések">
-                <MenuIcon>
-                  <FaBell />
-                </MenuIcon>
-              </div>
-            }
-            width={300}
-            forceClose={activeDropdown !== 'notification'}
-          >
-            <div data-testid="notification-dropdown">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa reiciendis repellat quis sint ea soluta
-              rerum. Atque, itaque. Soluta deleniti, facere dolores nulla explicabo enim officiis minus eaque ipsum
-              quibusdam.
-            </div>
-          </MenuDropdown>
-        </RightMenuItem>
+            <RightMenuItem onMouseOver={() => setActiveDropdown('notification')}>
+              <MenuDropdown
+                menuItem={
+                  <div aria-label="Értesítések">
+                    <MenuIcon>
+                      <FaBell />
+                    </MenuIcon>
+                  </div>
+                }
+                width={300}
+                forceClose={activeDropdown !== 'notification'}
+              >
+                <div data-testid="notification-dropdown">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa reiciendis repellat quis sint ea soluta
+                  rerum. Atque, itaque. Soluta deleniti, facere dolores nulla explicabo enim officiis minus eaque ipsum
+                  quibusdam.
+                </div>
+              </MenuDropdown>
+            </RightMenuItem>
 
-        <RightMenuItem onMouseOver={() => setActiveDropdown('profile')}>
-          <MenuDropdown
-            menuItem={<ProfilePicture aria-label="Profil">🍊</ProfilePicture>}
-            width={180}
-            forceClose={activeDropdown !== 'profile'}
-          >
-            <div data-testid="profile-dropdown">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius voluptatum similique facilis odio ex harum
-              placeat dolor aliquam debitis ea dolore aliquid, at cupiditate animi provident nulla. Magni, neque rerum!
-            </div>
-          </MenuDropdown>
-        </RightMenuItem>
+            <RightMenuItem onMouseOver={() => setActiveDropdown('profile')}>
+              <MenuDropdown
+                menuItem={<ProfilePicture aria-label="Profil">🍊</ProfilePicture>}
+                width={180}
+                forceClose={activeDropdown !== 'profile'}
+              >
+                <div data-testid="profile-dropdown">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius voluptatum similique facilis odio ex
+                  harum placeat dolor aliquam debitis ea dolore aliquid, at cupiditate animi provident nulla. Magni,
+                  neque rerum!
+                </div>
+              </MenuDropdown>
+            </RightMenuItem>
+          </>
+        )}
       </NavContainer>
     </FixedNav>
   )
