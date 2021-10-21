@@ -1,4 +1,4 @@
-This is an educational clone of Netflix making fun of the propaganda of the Hungarian government.
+This is an educational clone of Netflix.
 
 ## Getting Started
 
