@@ -25,19 +25,29 @@ const NavBar: React.FC<Props> = ({ logoOnly }) => {
           <>
             <Menu>
               <MenuItem className="active">
-                <a href="#">Főoldal</a>
+                <Link href="/home">
+                  <a>Főoldal</a>
+                </Link>
               </MenuItem>
               <MenuItem>
-                <a href="#">Tévéműsorok</a>
+                <Link href="/browser/Tévéműsorok">
+                  <a>Tévéműsorok</a>
+                </Link>
               </MenuItem>
               <MenuItem>
-                <a href="#">Filmek</a>
+                <Link href="/browser/Filmek">
+                  <a>Filmek</a>
+                </Link>
               </MenuItem>
               <MenuItem>
-                <a href="#">Új és népszerű</a>
+                <Link href="/browser/Új és népszerű">
+                  <a>Új és népszerű</a>
+                </Link>
               </MenuItem>
               <MenuItem>
-                <a href="#">Saját listám</a>
+                <Link href="/browser/Saját listám">
+                  <a>Saját listám</a>
+                </Link>
               </MenuItem>
             </Menu>
 

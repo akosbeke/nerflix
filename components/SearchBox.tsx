@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react'
+import React, { FormEvent, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
+import { useRouter } from 'next/router'
 
 import { FaSearch } from 'react-icons/fa'
 
@@ -10,9 +11,25 @@ const SearchBox: React.FC = () => {
   const [searchText, setSearchText] = useState<string>('')
   const searchRef = useRef<HTMLInputElement>(null)
 
+  const router = useRouter()
+
+  useEffect(() => {
+    if (router?.query?.term) {
+      setSearchText(router.query.term as string)
+      setOpen(true)
+    }
+  }, [router])
+
   useLayoutEffect(() => {
     if (open && searchRef) searchRef.current?.focus()
   }, [open, searchRef])
+
+  const handleSubmit: (e: FormEvent<HTMLFormElement>) => void = (e) => {
+    e.preventDefault()
+    if (searchText !== '') {
+      router.push(`/search/${searchText}`)
+    }
+  }
 
   return (
     <SearchContainer className={open ? 'opened' : ''}>
@@ -20,15 +37,17 @@ const SearchBox: React.FC = () => {
         <FaSearch />
       </MenuIcon>
 
-      <SearchInput
-        ref={searchRef}
-        aria-label="Címek, emberek, műfajok"
-        type="text"
-        value={searchText}
-        onChange={(e) => setSearchText(e.target.value)}
-        placeholder="Címek, emberek, műfajok"
-        className={open ? 'opened' : ''}
-      />
+      <form onSubmit={handleSubmit}>
+        <SearchInput
+          ref={searchRef}
+          aria-label="Címek, emberek, műfajok"
+          type="text"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          placeholder="Címek, emberek, műfajok"
+          className={open ? 'opened' : ''}
+        />
+      </form>
     </SearchContainer>
   )
 }
