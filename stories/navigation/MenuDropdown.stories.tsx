@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import MenuDropdown from '../../components/MenuDropdown'
+import MenuDropdown, { MenuDropdownItem } from '../../components/MenuDropdown'
 import Typography from '../../components/Typography'
 
 export default {
@@ -21,7 +21,7 @@ const Template: ComponentStory<typeof MenuDropdown> = (args) => <MenuDropdown {.
 export const Default = Template.bind({})
 
 Default.args = {
-  children: <Typography>Submenu content</Typography>,
+  children: <MenuDropdownItem>Test child</MenuDropdownItem>,
   menuItem: <Typography>Menu item</Typography>,
   width: 180,
 }

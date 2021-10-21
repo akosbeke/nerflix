@@ -56,6 +56,10 @@ const MenuDropdown: React.FC<Props> = ({ children, menuItem, width, forceClose =
 
 const Container = styled.div`
   position: relative;
+
+  a {
+    text-decoration: none;
+  }
 `
 
 const ItemContainer = styled.div`
@@ -81,6 +85,21 @@ const DropdownContainer = styled.div<DropdownContainerProps>`
     top: -17px;
     font-size: 20px;
   }
+`
+
+interface MenuDropdownItemProps {
+  border?: boolean
+}
+
+export const MenuDropdownItem = styled.div<MenuDropdownItemProps>`
+  display: block;
+  padding: 7px 12px;
+  text-decoration: none;
+  color: white;
+  font-family: ${(props) => props.theme.fonts.body};
+
+  border-top: 1px solid;
+  border-color: ${({ border }) => (border ? 'rgba(255, 255, 255, 0.2)' : 'transparent')};
 `
 
 export default MenuDropdown

@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
+import Link from 'next/link'
 import { FaBell } from 'react-icons/fa'
 
 import nerlogo from '../public/nerflix_logo.png'
 import SearchBox from './SearchBox'
-import MenuDropdown from './MenuDropdown'
-import { SITENAME } from '../config'
+import MenuDropdown, { MenuDropdownItem } from './MenuDropdown'
+import { NOTIFICATIONS, SITENAME } from '../config'
 
 interface Props {
   logoOnly?: boolean
@@ -57,9 +58,11 @@ const NavBar: React.FC<Props> = ({ logoOnly }) => {
                 forceClose={activeDropdown !== 'notification'}
               >
                 <div data-testid="notification-dropdown">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa reiciendis repellat quis sint ea soluta
-                  rerum. Atque, itaque. Soluta deleniti, facere dolores nulla explicabo enim officiis minus eaque ipsum
-                  quibusdam.
+                  {NOTIFICATIONS.map((notification) => (
+                    <MenuDropdownItem key={notification.id} border>
+                      {notification.text}
+                    </MenuDropdownItem>
+                  ))}
                 </div>
               </MenuDropdown>
             </RightMenuItem>
@@ -71,9 +74,11 @@ const NavBar: React.FC<Props> = ({ logoOnly }) => {
                 forceClose={activeDropdown !== 'profile'}
               >
                 <div data-testid="profile-dropdown">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius voluptatum similique facilis odio ex
-                  harum placeat dolor aliquam debitis ea dolore aliquid, at cupiditate animi provident nulla. Magni,
-                  neque rerum!
+                  <Link href="/" passHref>
+                    <a>
+                      <MenuDropdownItem>Kijelentkezés</MenuDropdownItem>
+                    </a>
+                  </Link>
                 </div>
               </MenuDropdown>
             </RightMenuItem>

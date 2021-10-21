@@ -14,3 +14,7 @@ export const USERS: UserItemProps[] = [
     url: 'https://csalad.hu/tamogatasok/csok',
   },
 ]
+export const NOTIFICATIONS = [
+  { id: 0, text: 'Új megjelenés, amire egy egész ország várt: Elk*rtuk' },
+  { id: 1, text: '"Mi magyarok tudujuk, hogy mit szeretünk nézni" - elindult a NERflix' },
+]
