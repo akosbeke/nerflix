@@ -24,17 +24,6 @@ test('NavBar should render all the necessary components', async () => {
 
   expect(notificationDropdown).toBeInTheDocument()
   expect(profileDropdown).toBeInTheDocument()
-
-  userEvent.hover(notificationDropdown)
-
-  expect(notificationDropdown).toBeVisible()
-  expect(profileDropdown).not.toBeVisible()
-
-  userEvent.unhover(notificationDropdown)
-  userEvent.hover(profileDropdown)
-
-  expect(notificationDropdown).not.toBeVisible()
-  expect(profileDropdown).toBeVisible()
 })
 
 test('NavBar should only render logo in logoOnly mode', async () => {
