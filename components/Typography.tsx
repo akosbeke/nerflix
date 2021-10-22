@@ -25,7 +25,11 @@ const Container = styled.div`
     font-weight: normal;
     font-weight: 400;
     line-height: normal;
-    font-size: 1.1vw;
+    font-size: 14px;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 1.1vw;
+    }
   }
 
   &.heading {
