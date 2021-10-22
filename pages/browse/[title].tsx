@@ -40,11 +40,16 @@ const Browse: NextPage = () => {
 }
 
 const BrowseTitle = styled.h1`
-  margin: 150px 0 1vw;
+  margin: 60px 0 20px;
   font-family: ${(props) => props.theme.fonts.body};
   color: white;
   font-weight: 700;
-  font-size: 38px;
+  font-size: 30px;
+
+  @media screen and (min-width: 1024px) {
+    margin: 150px 0 1vw;
+    font-size: 38px;
+  }
 `
 
 export default Browse

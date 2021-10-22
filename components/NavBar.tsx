@@ -3,11 +3,13 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaBell } from 'react-icons/fa'
+import { FaBars } from 'react-icons/fa'
 
 import nerlogo from '../public/nerflix_logo.png'
 import SearchBox from './SearchBox'
 import MenuDropdown, { MenuDropdownItem } from './MenuDropdown'
 import { NOTIFICATIONS, SITENAME } from '../config'
+import Drawer from './Drawer'
 
 interface Props {
   logoOnly?: boolean
@@ -15,15 +17,21 @@ interface Props {
 
 const NavBar: React.FC<Props> = ({ logoOnly }) => {
   const [activeDropdown, setActiveDropdown] = useState<'notification' | 'profile' | null>(null)
+  const [drawer, setDrawer] = useState<boolean>(false)
 
   return (
     <FixedNav>
       <NavContainer>
-        <Link href="/">
-          <a>
-            <Image alt={SITENAME} src={nerlogo} width={90} height={33} />
-          </a>
-        </Link>
+        <Hamburger onClick={() => setDrawer(!drawer)}>
+          <FaBars />
+        </Hamburger>
+        <Logo>
+          <Link href="/">
+            <a>
+              <Image alt={SITENAME} src={nerlogo} width={90} height={33} />
+            </a>
+          </Link>
+        </Logo>
 
         {!logoOnly && (
           <>
@@ -55,7 +63,7 @@ const NavBar: React.FC<Props> = ({ logoOnly }) => {
               </MenuItem>
             </Menu>
 
-            <RightMenuItem>
+            <RightMenuItem className="mobile">
               <SearchBox />
             </RightMenuItem>
 
@@ -99,9 +107,27 @@ const NavBar: React.FC<Props> = ({ logoOnly }) => {
           </>
         )}
       </NavContainer>
+      <Drawer
+        opened={drawer}
+        onClose={() => {
+          setDrawer(false)
+        }}
+      />
     </FixedNav>
   )
 }
+
+const Hamburger = styled.button`
+  border: none;
+  background: none;
+  color: white;
+  font-size: 20px;
+  margin-right: 10px;
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+`
 
 const FixedNav = styled.div`
   position: fixed;
@@ -114,17 +140,34 @@ const FixedNav = styled.div`
 const NavContainer = styled.nav`
   display: flex;
   align-items: center;
-  height: 68px;
+  height: 50px;
   padding: 0 4%;
   font-family: ${(props) => props.theme.fonts.body};
   color: ${(props) => props.theme.colors.text};
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0));
+  background: rgba(0, 0, 0, 0.6);
+
+  @media screen and (min-width: 1024px) {
+    height: 68px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0));
+  }
+`
+
+const Logo = styled.div`
+  flex-grow: 1;
+
+  @media screen and (min-width: 1024px) {
+    flex-grow: 0;
+  }
 `
 
 const Menu = styled.ul`
   list-style: none;
-  display: flex;
-  flex: 1;
+  display: none;
+
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    flex: 1;
+  }
 `
 
 const MenuItem = styled.li`
@@ -143,13 +186,21 @@ const MenuItem = styled.li`
 
 const RightMenuItem = styled.div`
   margin-left: 30px;
+
+  &:not(.mobile) {
+    display: none;
+
+    @media screen and (min-width: 1024px) {
+      display: block;
+    }
+  }
 `
 
 const MenuIcon = styled.span`
   font-size: 20px;
 `
 
-const ProfilePicture = styled.div`
+export const ProfilePicture = styled.div`
   width: 32px;
   height: 32px;
   background: rgb(204, 113, 0);

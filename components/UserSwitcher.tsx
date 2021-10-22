@@ -70,17 +70,22 @@ const UserItemContainer = styled.div<UserItemContainerProps>`
   margin: 0 1vw;
 
   .emoji {
-    height: 10vw;
-    width: 10vw;
+    height: 85px;
+    width: 85px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
     border: 0px solid white;
     padding: 3px;
-
     background: linear-gradient(180deg, ${({ startColor }) => startColor} 0%, ${({ endColor }) => endColor} 100%);
-    font-size: 7vw;
+    font-size: 50px;
+
+    @media screen and (min-width: 1024px) {
+      height: 10vw;
+      width: 10vw;
+      font-size: 7vw;
+    }
 
     img {
       border-radius: 5px;
@@ -93,7 +98,13 @@ const UserItemContainer = styled.div<UserItemContainerProps>`
     margin: 0.6em 0;
     line-height: 1.2em;
     min-height: 1.8em;
-    font-size: 1.3vw;
+    font-size: 12px;
+
+    @media screen and (min-width: 1024px) {
+      line-height: 1.2em;
+      min-height: 1.8em;
+      font-size: 1.3vw;
+    }
   }
 
   &:hover {

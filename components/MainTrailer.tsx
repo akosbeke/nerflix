@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactPlayer from 'react-player'
 import styled from 'styled-components'
+import useWindowSize from '../hooks/useWindowSize'
 
 interface Props {
   url: string
@@ -9,22 +10,27 @@ interface Props {
 }
 
 const MainTrailer: React.FC<Props> = ({ url, autoplay = true, loop = true }) => {
-  return (
-    <Container>
-      <EmbedVideoContainer>
-        <ReactPlayer
-          className="react-player"
-          url={url}
-          playing={autoplay}
-          loop={loop}
-          controls={false}
-          width="100%"
-          height="100%"
-        />
-      </EmbedVideoContainer>
-      <BottomGradient />
-    </Container>
-  )
+  const dimensions = useWindowSize()
+
+  if (dimensions.width && dimensions.width >= 1024)
+    return (
+      <Container>
+        <EmbedVideoContainer>
+          <ReactPlayer
+            className="react-player"
+            url={url}
+            playing={autoplay}
+            loop={loop}
+            controls={false}
+            width="100%"
+            height="100%"
+          />
+        </EmbedVideoContainer>
+        <BottomGradient />
+      </Container>
+    )
+
+  return null
 }
 
 const EmbedVideoContainer = styled.div`

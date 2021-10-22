@@ -12,38 +12,54 @@ import { ArrowWrapper } from './HomeRow'
 
 const NumberedRow = () => {
   return (
-    <Container>
-      <MainContainer>
-        <Typography variant="heading">Top 10 ma | Magyarország</Typography>
+    <>
+      <Spacer />
+      <Container>
+        <MainContainer>
+          <Typography variant="heading">Top 10 ma | Magyarország</Typography>
 
-        <Slider
-          infinite={false}
-          speed={500}
-          slidesToShow={6}
-          slidesToScroll={4}
-          nextArrow={
-            <ArrowWrapper>
-              <RightIcon />
-            </ArrowWrapper>
-          }
-          prevArrow={
-            <ArrowWrapper className="right">
-              <LeftIcon />
-            </ArrowWrapper>
-          }
-        >
-          {new Array(10).fill('Elk*rtuk').map((title, index) => {
-            return <ThumbnailNumber key={title + index} number={index + 1} src={portraitThumbnail} title={title} />
-          })}
-        </Slider>
-      </MainContainer>
-    </Container>
+          <Slider
+            infinite={false}
+            speed={500}
+            slidesToShow={6}
+            slidesToScroll={4}
+            nextArrow={
+              <ArrowWrapper>
+                <RightIcon />
+              </ArrowWrapper>
+            }
+            prevArrow={
+              <ArrowWrapper className="right">
+                <LeftIcon />
+              </ArrowWrapper>
+            }
+          >
+            {new Array(10).fill('Elk*rtuk').map((title, index) => {
+              return <ThumbnailNumber key={title + index} number={index + 1} src={portraitThumbnail} title={title} />
+            })}
+          </Slider>
+        </MainContainer>
+      </Container>
+    </>
   )
 }
 
 const Container = styled.div`
   position: relative;
-  margin-top: -7vw;
+  display: none;
+
+  @media screen and (min-width: 1024px) {
+    margin-top: -7vw;
+    display: block;
+  }
+`
+
+const Spacer = styled.div`
+  height: 40px;
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
 `
 
 export default NumberedRow

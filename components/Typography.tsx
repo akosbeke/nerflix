@@ -30,14 +30,23 @@ const Container = styled.div`
 
   &.heading {
     font-weight: 700;
-    line-height: 1.25vw;
-    font-size: 1.4vw;
+    font-size: 20px;
+    line-height: 1.2em;
+
+    @media screen and (min-width: 1024px) {
+      line-height: 1.25vw;
+      font-size: 1.4vw;
+    }
   }
 
   &.huge {
     font-weight: 500;
     line-height: 1;
-    font-size: 3.5vw;
+    font-size: 30px;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 3.5vw;
+    }
   }
 `
 

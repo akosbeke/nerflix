@@ -26,6 +26,15 @@ const HomeRow: React.FC<Props> = ({ title }) => {
             speed={500}
             slidesToShow={6}
             slidesToScroll={6}
+            responsive={[
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                },
+              },
+            ]}
             nextArrow={
               <ArrowWrapper>
                 <RightIcon />
@@ -52,7 +61,11 @@ const HomeRow: React.FC<Props> = ({ title }) => {
 }
 
 const RowContainer = styled.div`
-  margin: 3vw -2.5px;
+  margin: 30px -2.5px;
+
+  @media screen and (min-width: 1024px) {
+    margin: 3vw -2.5px;
+  }
 `
 
 const SliderWrapper = styled.div`
@@ -72,7 +85,7 @@ export const ArrowWrapper = styled.div`
   bottom: 0;
   left: 0;
   right: auto;
-  z-index: 100;
+  z-index: 99;
 
   &.slick-next {
     left: auto;

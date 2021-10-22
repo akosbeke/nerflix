@@ -57,7 +57,13 @@ const SearchContainer = styled.div`
   color: ${(props) => props.theme.colors.text};
   display: inline-flex;
   align-items: center;
-  border: solid 1px transparent;
+  border: solid 1px rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.75);
+
+  @media screen and (min-width: 1024px) {
+    background: transparent;
+    border-color: transparent;
+  }
 
   &.opened {
     background: rgba(0, 0, 0, 0.75);
@@ -70,6 +76,11 @@ const MenuIcon = styled.span`
   cursor: pointer;
   padding: 0 6px;
   line-height: 1;
+  display: none;
+
+  @media screen and (min-width: 1024px) {
+    display: inline;
+  }
 `
 
 const SearchInput = styled.input`
@@ -77,18 +88,26 @@ const SearchInput = styled.input`
   background: 0 0;
   color: white;
 
-  padding: 7px 0 7px;
+  padding: 7px;
   font-size: 14px;
   outline: 0;
-  width: 0;
-  opacity: 0;
-  transition: 300ms;
+  width: 120px;
+
+  @media screen and (min-width: 1024px) {
+    padding-left: 0;
+    padding-right: 0;
+    width: 0;
+    opacity: 0;
+    transition: 300ms;
+  }
 
   &.opened {
-    width: 212px;
-    opacity: 1;
-    padding-left: 14;
-    padding-right: 7;
+    @media screen and (min-width: 1024px) {
+      width: 212px;
+      opacity: 1;
+      padding-left: 14;
+      padding-right: 7;
+    }
   }
 `
 export default SearchBox

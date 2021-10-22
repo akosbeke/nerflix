@@ -38,9 +38,13 @@ const Search: NextPage = () => {
 }
 
 const SearchText = styled.div`
-  margin: 150px 0 1vw;
+  margin: 60px 0 20px;
   font-family: ${(props) => props.theme.fonts.body};
   color: grey;
+
+  @media screen and (min-width: 1024px) {
+    margin: 150px 0 1vw;
+  }
 
   span {
     color: white;
