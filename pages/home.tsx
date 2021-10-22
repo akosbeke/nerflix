@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import { SITENAME } from '../config'
+import { SITENAME, VIDEO_URL } from '../config'
 import DefaultLayout from '../components/layouts/DefaultLayout'
 import MainTrailer from '../components/MainTrailer'
 import NumberedRow from '../components/NumberedRow'
@@ -17,7 +17,7 @@ const Home: NextPage = () => {
       </Head>
 
       <DefaultLayout>
-        <MainTrailer url="https://www.youtube.com/watch?v=Ibr41M7rNTg" autoplay={false} />
+        <MainTrailer url={VIDEO_URL} autoplay={true} />
 
         <NumberedRow />
 

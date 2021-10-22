@@ -1,6 +1,7 @@
 import { UserItemProps } from '../components/UserSwitcher'
 
 export const SITENAME = 'NERflix'
+export const VIDEO_URL = 'https://www.youtube.com/watch?v=Ibr41M7rNTg'
 export const USERS: UserItemProps[] = [
   {
     name: 'Teszt név',

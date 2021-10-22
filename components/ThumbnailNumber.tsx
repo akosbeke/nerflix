@@ -1,5 +1,6 @@
 import React from 'react'
 import Image, { ImageProps } from 'next/image'
+import Link from 'next/link'
 import styled from 'styled-components'
 
 interface Props {
@@ -10,12 +11,14 @@ interface Props {
 
 const ThumbnailNumber: React.FC<Props> = ({ number, src, title }) => {
   return (
-    <Container>
-      <Number>{number}</Number>
-      <ImageWrapper>
-        <Image src={src} alt={title} width={426} height={597} />
-      </ImageWrapper>
-    </Container>
+    <Link href="/watch" passHref>
+      <Container>
+        <Number>{number}</Number>
+        <ImageWrapper>
+          <Image src={src} alt={title} width={426} height={597} />
+        </ImageWrapper>
+      </Container>
+    </Link>
   )
 }
 
@@ -35,7 +38,9 @@ const Number = styled.span`
   -webkit-text-stroke-color: rgb(89, 89, 89);
 `
 
-const Container = styled.div`
+const Container = styled.a`
+  display: block;
+  text-decoration: none;
   width: 100%;
   height: 0;
   position: relative;

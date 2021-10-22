@@ -19,7 +19,11 @@ const NavBar: React.FC<Props> = ({ logoOnly }) => {
   return (
     <FixedNav>
       <NavContainer>
-        <Image alt={SITENAME} src={nerlogo} width={90} height={33} />
+        <Link href="/">
+          <a>
+            <Image alt={SITENAME} src={nerlogo} width={90} height={33} />
+          </a>
+        </Link>
 
         {!logoOnly && (
           <>
