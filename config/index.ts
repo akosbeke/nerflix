@@ -17,6 +17,7 @@ export const USERS: UserItemProps[] = [
   },
 ]
 export const NOTIFICATIONS = [
-  { id: 0, text: 'Új megjelenés, amire egy egész ország várt: Elk*rtuk' },
-  { id: 1, text: '"Mi magyarok tudjuk, hogy mit szeretünk nézni" - elindult a NERflix' },
+  { id: 0, text: 'Rekordokat döntöget az Elk*rtuk az IMDB-n' },
+  { id: 1, text: 'Új megjelenés, amire egy egész ország várt: Elk*rtuk' },
+  { id: 2, text: '"Mi magyarok tudjuk, hogy mit szeretünk nézni" - elindult a NERflix' },
 ]
