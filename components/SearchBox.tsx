@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 
 import { FaSearch } from 'react-icons/fa'
 
+import * as ga from '../lib/ga'
 import useLayoutEffect from '../hooks/useIsomorphicLayoutEffect'
 
 const SearchBox: React.FC = () => {
@@ -27,6 +28,13 @@ const SearchBox: React.FC = () => {
   const handleSubmit: (e: FormEvent<HTMLFormElement>) => void = (e) => {
     e.preventDefault()
     if (searchText !== '') {
+      ga.event({
+        action: 'search',
+        params: {
+          search_term: searchText,
+        },
+      })
+
       router.push(`/search/${searchText}`)
     }
   }
