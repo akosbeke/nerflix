@@ -36,7 +36,7 @@ export default class MyDocument extends Document {
           <meta property="og:type" content="website" />
           <meta property="og:title" content="NERflix" />
           <meta property="og:description" content="Magyarország első számú streaming alkalmazása" />
-          <meta property="og:image" content="/nerflix_share.jpg" />
+          <meta property="og:image" content="https://nerflix.vercel.app/nerflix_share.jpg" />
 
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS}`} />
