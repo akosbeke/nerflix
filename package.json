@@ -13,7 +13,7 @@
     "cypress:headless": "cypress run",
     "e2e": "start-server-and-test start http://localhost:3000 cypress",
     "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless",
-    "deploy": "npm run test:ci && npm run build && npm run e2e:headless",
+    "deploy": "npm run test:ci && npm run build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
