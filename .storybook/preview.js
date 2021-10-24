@@ -1,9 +1,9 @@
 import * as NextImage from 'next/image'
 import { withThemesProvider } from 'themeprovider-storybook'
 
-import { defaultTheme } from '../config/theme'
+import { defaultTheme } from '../src/config/theme'
 
-import '../styles/slick.css'
+import '../src/styles/slick.css'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
