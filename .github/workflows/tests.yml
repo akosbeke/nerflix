@@ -1,4 +1,4 @@
-name: Unit and E2E tests
+name: Unit tests
 
 on: 
   push:
@@ -30,10 +30,3 @@ jobs:
 
       - name: Unit tests
         run: npm run test:ci
-
-      - name: E2E tests
-        uses: cypress-io/github-action@v2
-        with:
-          build: npm run build
-          start: npm run start
-          wait-on: http://localhost:3000

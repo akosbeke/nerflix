@@ -2,7 +2,7 @@ name: Deploy to Vercel
 
 on:
   workflow_run:
-    workflows: ["Unit and E2E tests"]
+    workflows: ["Unit tests", "E2E tests"]
     branches: [main]
     types: 
       - completed
